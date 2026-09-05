@@ -94,7 +94,15 @@ function showRootFolder() {
 function showMusicFolder() {
     windowTitle.innerHTML = "📁 Szpoinkowanie - Muzyka";
     addressPath.textContent = "Mój Komputer > Szpoinkowanie > Muzyka";
-    if (backBtn) backBtn.style.display = "inline-block";
+    if (backBtn) {
+        backBtn.style.display = "inline-block";
+        // Specjalna obsługa wyświetlania przycisku wstecz na telefonach
+        if (window.innerWidth <= 768) {
+            backBtn.style.display = "block";
+            backBtn.style.marginBottom = "10px";
+            backBtn.style.width = "100%";
+        }
+    }
 
     windowBody.innerHTML = `
         <a href="https://www.youtube.com/watch?v=1IrByTEiuYk&list=RD1IrByTEiuYk&start_radio=1" target="_blank" class="folder-item">
