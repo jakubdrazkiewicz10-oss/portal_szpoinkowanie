@@ -84,7 +84,6 @@ function showRootFolder() {
         </div>
     `;
 
-    // Ponowne przypisanie zdarzenia do dynamicznie wygenerowanego folderu muzyki
     const newMusicBtn = document.getElementById('musicFolderBtn');
     if (newMusicBtn) {
         newMusicBtn.addEventListener('click', showMusicFolder);
