@@ -75,7 +75,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    display: none;
+    display: none; /* Domyślnie ukryte na starcie */
     z-index: 500;
     flex-direction: column;
 }
@@ -203,7 +203,7 @@ body, html {
     word-break: break-word;
 }
 
-/* --- Pasek Zadań --- */
+/* --- Pasek Zadań (Taskbar) --- */
 .taskbar {
     position: fixed;
     bottom: 0;
@@ -269,7 +269,7 @@ body, html {
     font-size: 11px;
 }
 
-/* --- Menu Start --- */
+/* --- Wyskakujące Menu Start --- */
 .start-menu {
     position: fixed;
     bottom: 45px;
@@ -358,59 +358,4 @@ body, html {
 .start-menu-right li:hover {
     color: #0055aa;
     text-decoration: underline;
-}
-
-/* ====================================================
-   TRYB MOBILNY (Smartfony)
-   ================================================    */
-@media screen and (max-width: 768px) {
-    .taskbar, .start-menu {
-        display: none !important;
-    }
-
-    .desktop {
-        height: 100vh;
-        flex-direction: row;
-        justify-content: center;
-        align-content: flex-start;
-        gap: 20px;
-        padding-top: 30px;
-    }
-
-    .desktop-icon {
-        width: 80px;
-    }
-
-    .vista-window {
-        position: fixed;
-        top: 20px;
-        left: 10px;
-        width: calc(100vw - 20px);
-        height: calc(100vh - 40px);
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    .window-command-bar, .window-address-bar {
-        display: none;
-    }
-
-    .window-body {
-        justify-content: space-around;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .folder-item {
-        width: 42%;
-        height: 105px;
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.6);
-    }
-
-    .folder-item span {
-        font-size: 12px;
-        font-weight: 600;
-    }
 }
