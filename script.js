@@ -96,7 +96,6 @@ function showMusicFolder() {
     addressPath.textContent = "Mój Komputer > Szpoinkowanie > Muzyka";
     if (backBtn) {
         backBtn.style.display = "inline-block";
-        // Specjalna obsługa wyświetlania przycisku wstecz na telefonach
         if (window.innerWidth <= 768) {
             backBtn.style.display = "block";
             backBtn.style.marginBottom = "10px";
