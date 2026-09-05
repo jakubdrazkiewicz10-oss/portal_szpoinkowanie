@@ -1,4 +1,4 @@
-/* --- Ogólne ustawienia i Tapeta --- */
+/* --- Ogólne ustawienia --- */
 body, html {
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@ body, html {
     z-index: -999;
 }
 
-/* --- Pulpit i Siatka Ikon --- */
+/* --- Pulpit (Desktop) --- */
 .desktop {
     padding: 20px;
     height: calc(100vh - 60px);
@@ -63,7 +63,7 @@ body, html {
     word-break: break-word;
 }
 
-/* --- Okno Visty --- */
+/* --- Okno Visty (Desktop) --- */
 .vista-window {
     position: absolute;
     top: 60px;
@@ -75,7 +75,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    display: none; /* Domyślnie ukryte na starcie */
+    display: none;
     z-index: 500;
     flex-direction: column;
 }
@@ -203,7 +203,7 @@ body, html {
     word-break: break-word;
 }
 
-/* --- Pasek Zadań (Taskbar) --- */
+/* --- Pasek Zadań --- */
 .taskbar {
     position: fixed;
     bottom: 0;
@@ -269,7 +269,7 @@ body, html {
     font-size: 11px;
 }
 
-/* --- Wyskakujące Menu Start --- */
+/* --- Menu Start --- */
 .start-menu {
     position: fixed;
     bottom: 45px;
@@ -358,4 +358,70 @@ body, html {
 .start-menu-right li:hover {
     color: #0055aa;
     text-decoration: underline;
+}
+
+/* ==========================================
+   WERSJA ALTERNATYWNA NA TELEFONY (RESPONSYWNA)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    /* Układ pulpitu na telefonie – siatka na całą szerokość */
+    .desktop {
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: flex-start;
+        padding: 15px 10px;
+        gap: 10px;
+        height: calc(100vh - 50px);
+    }
+
+    .desktop-icon {
+        width: 75px;
+    }
+
+    /* Okno Eksploratora zajmuje prawie cały ekran telefonu dla wygody */
+    .vista-window {
+        top: 10px;
+        left: 5px;
+        width: calc(100vw - 12px);
+        height: calc(100vh - 65px);
+        border-radius: 6px;
+    }
+
+    /* Ukrywamy zbędne przyciski paska okna na małym ekranie */
+    .win-btn.max {
+        display: none;
+    }
+
+    .window-command-bar {
+        display: none; /* Ukrywanie paska poleceń oszczędza miejsce na ekranie telefonu */
+    }
+
+    /* Zawartość okna dopasowana do dotyku */
+    .window-body {
+        justify-content: space-around;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .folder-item {
+        width: 42%; /* Dwa elementy w rzędzie na ekranie telefonu */
+        height: 90px;
+    }
+
+    /* Dopasowanie menu Start na pełną szerokość dołu ekranu telefonu */
+    .start-menu {
+        bottom: 40px;
+        left: 0;
+        width: 100vw;
+        height: 380px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .start-menu-left {
+        width: 65%;
+    }
+
+    .start-menu-right {
+        width: 35%;
+    }
 }
