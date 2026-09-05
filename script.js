@@ -96,11 +96,6 @@ function showMusicFolder() {
     addressPath.textContent = "Mój Komputer > Szpoinkowanie > Muzyka";
     if (backBtn) {
         backBtn.style.display = "inline-block";
-        if (window.innerWidth <= 768) {
-            backBtn.style.display = "block";
-            backBtn.style.marginBottom = "10px";
-            backBtn.style.width = "100%";
-        }
     }
 
     windowBody.innerHTML = `
