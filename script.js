@@ -63,7 +63,7 @@ if (startBtn && startMenu) {
 function showRootFolder() {
     windowTitle.innerHTML = "📁 Szpoinkowanie - Folder Główny";
     addressPath.textContent = "Mój Komputer > Szpoinkowanie";
-    backBtn.style.display = "none";
+    if (backBtn) backBtn.style.display = "none";
 
     windowBody.innerHTML = `
         <div class="folder-item" onclick="alert('Otwieranie folderu Felietony...')">
@@ -84,14 +84,18 @@ function showRootFolder() {
         </div>
     `;
 
-    document.getElementById('musicFolderBtn').addEventListener('click', showMusicFolder);
+    // Ponowne przypisanie zdarzenia do dynamicznie wygenerowanego folderu muzyki
+    const newMusicBtn = document.getElementById('musicFolderBtn');
+    if (newMusicBtn) {
+        newMusicBtn.addEventListener('click', showMusicFolder);
+    }
 }
 
 // Widok podfolderu Muzyka z plikiem Ripsquad - 2007
 function showMusicFolder() {
     windowTitle.innerHTML = "📁 Szpoinkowanie - Muzyka";
     addressPath.textContent = "Mój Komputer > Szpoinkowanie > Muzyka";
-    backBtn.style.display = "inline-block";
+    if (backBtn) backBtn.style.display = "inline-block";
 
     windowBody.innerHTML = `
         <a href="https://www.youtube.com/watch?v=1IrByTEiuYk&list=RD1IrByTEiuYk&start_radio=1" target="_blank" class="folder-item">
