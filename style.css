@@ -1,0 +1,361 @@
+/* --- Ogólne ustawienia i Tapeta --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+.wallpaper {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background-image: url('wallpaper.jpg'), linear-gradient(135deg, #10261a 0%, #1f4e35 35%, #004488 70%, #113355 100%);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -999;
+}
+
+/* --- Pulpit i Siatka Ikon --- */
+.desktop {
+    padding: 20px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-content: flex-start;
+}
+
+.desktop-icon {
+    width: 84px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    padding: 8px 4px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.desktop-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.desktop-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.7));
+}
+
+.desktop-icon span {
+    font-size: 12px;
+    margin-top: 6px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+    word-break: break-word;
+}
+
+/* --- Okno Visty --- */
+.vista-window {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    width: 650px;
+    height: 450px;
+    background: rgba(240, 240, 240, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px 8px 5px 5px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    display: none; /* Domyślnie ukryte na starcie */
+    z-index: 500;
+    flex-direction: column;
+}
+
+.window-header {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(210,230,250,0.7) 50%, rgba(140,190,230,0.8) 51%, rgba(110,160,210,0.9) 100%);
+    padding: 6px 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.window-title {
+    font-weight: bold;
+    font-size: 12px;
+    color: #1a1a1a;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 3px;
+}
+
+.win-btn {
+    background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 100%);
+    border: 1px solid #707070;
+    border-radius: 3px;
+    width: 22px; height: 19px;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+}
+.win-btn.close {
+    background: linear-gradient(to bottom, #e81123 0%, #c91423 100%);
+    border-color: #aa111e;
+    color: white;
+}
+
+.window-command-bar {
+    background: #e6e6e6;
+    padding: 4px 10px;
+    border-bottom: 1px solid #b3b3b3;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.window-command-bar button {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    color: #333;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+.window-command-bar button:hover { background: rgba(0,0,0,0.1); }
+
+.window-address-bar {
+    background: white;
+    padding: 3px 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+}
+.address-path {
+    background: #f9f9f9;
+    border: 1px solid #d0d0d0;
+    padding: 2px 8px;
+    flex-grow: 1;
+    color: #333;
+    border-radius: 2px;
+}
+
+.window-body {
+    padding: 15px;
+    background: white;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    color: #111;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.folder-item {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px;
+    text-decoration: none;
+    color: black;
+}
+.folder-item:hover {
+    background: rgba(0, 100, 255, 0.1);
+    border: 1px solid rgba(0, 100, 255, 0.2);
+}
+.folder-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+.folder-item span {
+    font-size: 12px;
+    color: black;
+    margin-top: 4px;
+    text-align: center;
+    word-break: break-word;
+}
+
+/* --- Pasek Zadań (Taskbar) --- */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(40,55,70,0.85) 0%, rgba(15,25,35,0.92) 100%);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 -5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+.start-button {
+    background: transparent;
+    border: none;
+    padding: 0 10px 0 4px;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.vista-orb {
+    width: 32px;
+    height: 32px;
+    background: url('vista-orb.png') no-repeat center center, 
+                radial-gradient(circle at 35% 35%, #88ddff 0%, #0055aa 55%, #001133 100%);
+    background-size: contain;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 0 0 8px rgba(50, 150, 255, 0.8), inset 0 2px 3px rgba(255,255,255,0.8);
+}
+
+.taskbar-center {
+    display: flex;
+    gap: 5px;
+    padding-left: 10px;
+    flex-grow: 1;
+}
+
+.tray {
+    color: white;
+    padding-right: 15px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.tray-icons {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+}
+
+/* --- Wyskakujące Menu Start --- */
+.start-menu {
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+    width: 380px;
+    height: 450px;
+    background: rgba(230, 240, 250, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px 8px 0 0;
+    box-shadow: -5px -5px 25px rgba(0,0,0,0.4);
+    display: none;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.start-menu-left {
+    width: 60%;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 15px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.start-user-icon {
+    font-size: 28px;
+    background: #ccc;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+}
+
+.start-username {
+    font-weight: bold;
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.start-app-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.start-app-list li {
+    font-size: 12px;
+    color: #222;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+.start-app-list li:hover {
+    background: rgba(0, 100, 255, 0.15);
+    color: #000;
+}
+
+.start-menu-right {
+    width: 40%;
+    padding: 15px;
+    background: rgba(210, 225, 240, 0.5);
+}
+
+.start-menu-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.start-menu-right li {
+    font-size: 11px;
+    color: #444;
+    cursor: pointer;
+}
+.start-menu-right li:hover {
+    color: #0055aa;
+    text-decoration: underline;
+}
