@@ -1,4 +1,4 @@
-/* --- Ogólne ustawienia --- */
+/* --- Ogólne ustawienia i Tapeta --- */
 body, html {
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@ body, html {
     z-index: -999;
 }
 
-/* --- Pulpit (Desktop) --- */
+/* --- Pulpit i Siatka Ikon --- */
 .desktop {
     padding: 20px;
     height: calc(100vh - 60px);
@@ -63,7 +63,7 @@ body, html {
     word-break: break-word;
 }
 
-/* --- Okno Visty (Desktop) --- */
+/* --- Okno Visty --- */
 .vista-window {
     position: absolute;
     top: 60px;
@@ -75,7 +75,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    display: none;
+    display: none; /* Domyślnie ukryte na starcie */
     z-index: 500;
     flex-direction: column;
 }
@@ -203,7 +203,7 @@ body, html {
     word-break: break-word;
 }
 
-/* --- Pasek Zadań --- */
+/* --- Pasek Zadań (Taskbar) --- */
 .taskbar {
     position: fixed;
     bottom: 0;
@@ -269,7 +269,7 @@ body, html {
     font-size: 11px;
 }
 
-/* --- Menu Start --- */
+/* --- Wyskakujące Menu Start --- */
 .start-menu {
     position: fixed;
     bottom: 45px;
@@ -360,68 +360,61 @@ body, html {
     text-decoration: underline;
 }
 
-/* ==========================================
-   WERSJA ALTERNATYWNA NA TELEFONY (RESPONSYWNA)
-   ========================================== */
+/* ====================================================
+   TRYB MOBILNY (Smartfony - zachowuje tapetę i foldery)
+   ================================================    */
 @media screen and (max-width: 768px) {
-    /* Układ pulpitu na telefonie – siatka na całą szerokość */
+    /* Ukrywamy dolny pasek zadań komputera na telefonie */
+    .taskbar, .start-menu {
+        display: none !important;
+    }
+
+    /* Pulpit na telefonie rozstawia ikony na tle tapety w górnej części */
     .desktop {
+        height: 100vh;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-content: flex-start;
-        padding: 15px 10px;
-        gap: 10px;
-        height: calc(100vh - 50px);
+        gap: 20px;
+        padding-top: 30px;
     }
 
     .desktop-icon {
-        width: 75px;
+        width: 80px;
     }
 
-    /* Okno Eksploratora zajmuje prawie cały ekran telefonu dla wygody */
+    /* Okno Eksploratora (foldery) dopasowuje się ładnie do ekranu telefonu, 
+       nie psując tapety Visty w tle */
     .vista-window {
-        top: 10px;
-        left: 5px;
-        width: calc(100vw - 12px);
-        height: calc(100vh - 65px);
-        border-radius: 6px;
+        position: fixed;
+        top: 20px;
+        left: 10px;
+        width: calc(100vw - 20px);
+        height: calc(100vh - 40px);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
     }
 
-    /* Ukrywamy zbędne przyciski paska okna na małym ekranie */
-    .win-btn.max {
-        display: none;
+    .window-command-bar, .window-address-bar {
+        display: none; /* Ukrywamy paski adresowe, zostawiając samą zawartość folderów */
     }
 
-    .window-command-bar {
-        display: none; /* Ukrywanie paska poleceń oszczędza miejsce na ekranie telefonu */
-    }
-
-    /* Zawartość okna dopasowana do dotyku */
     .window-body {
         justify-content: space-around;
-        gap: 10px;
-        padding: 10px;
+        gap: 15px;
+        padding: 15px;
     }
 
     .folder-item {
-        width: 42%; /* Dwa elementy w rzędzie na ekranie telefonu */
-        height: 90px;
+        width: 42%; /* Dwa foldery w rzędzie na telefonie – idealne pod palec */
+        height: 105px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
     }
 
-    /* Dopasowanie menu Start na pełną szerokość dołu ekranu telefonu */
-    .start-menu {
-        bottom: 40px;
-        left: 0;
-        width: 100vw;
-        height: 380px;
-        border-radius: 10px 10px 0 0;
-    }
-
-    .start-menu-left {
-        width: 65%;
-    }
-
-    .start-menu-right {
-        width: 35%;
+    .folder-item span {
+        font-size: 12px;
+        font-weight: 600;
     }
 }
