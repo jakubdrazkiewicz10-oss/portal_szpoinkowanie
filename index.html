@@ -8,23 +8,31 @@
 </head>
 <body>
 
+    <!-- Tapeta / Tło systemu -->
     <div class="wallpaper"></div>
 
+    <!-- Pulpit z ikonami -->
     <div class="desktop">
+        <!-- 1. Mój Komputer -->
         <div class="desktop-icon" id="openWindowBtn">
             <img src="computer-icon.png" alt="Mój Komputer" class="desktop-img">
             <span>Mój Komputer</span>
         </div>
+
+        <!-- 2. Szpoinkowanie -->
         <div class="desktop-icon" id="openSzpoinkowanieBtn">
             <img src="szpoinkowanie-icon.png" alt="Szpoinkowanie" class="desktop-img">
             <span>Szpoinkowanie</span>
         </div>
+
+        <!-- 3. Kosz -->
         <div class="desktop-icon" id="trashBtn">
             <img src="trash-icon.png" alt="Kosz" class="desktop-img">
             <span>Kosz</span>
         </div>
     </div>
 
+    <!-- Okno aplikacji (Eksplorator Windows Vista) -->
     <div class="vista-window" id="myWindow">
         <div class="window-header">
             <span class="window-title" id="windowTitle">
@@ -48,6 +56,7 @@
             <span>Adres:</span> <div class="address-path" id="addressPath">Mój Komputer > Szpoinkowanie</div>
         </div>
 
+        <!-- Wnętrze okna (sterowane dynamicznie przez JavaScript) -->
         <div class="window-body file-explorer" id="windowBody">
             <div class="folder-item" onclick="alert('Otwieranie folderu Felietony...')">
                 <img src="szpoinkowanie-icon.png" alt="Felietony" class="folder-img">
@@ -68,6 +77,7 @@
         </div>
     </div>
 
+    <!-- Wysuwane Menu Start w stylu Visty -->
     <div class="start-menu" id="startMenu">
         <div class="start-menu-left">
             <div class="start-user-icon">👤</div>
@@ -88,12 +98,18 @@
         </div>
     </div>
 
+    <!-- Klasyczny Pasek Zadań na dole -->
     <div class="taskbar">
+        <!-- Przycisk Start z Perłą Visty -->
         <button class="start-button" id="startBtn">
             <div class="vista-orb"></div>
             <span>Start</span>
         </button>
+
+        <!-- Pusty obszar środkowy paska zadań -->
         <div class="taskbar-center"></div>
+
+        <!-- Zasobnik systemowy (Tray) z działającym zegarem -->
         <div class="tray">
             <div class="tray-icons">
                 <span>📶</span>
@@ -103,6 +119,7 @@
         </div>
     </div>
 
+    <!-- Skrypt umieszczony na samym dole -->
     <script src="script.js"></script>
 </body>
 </html>
