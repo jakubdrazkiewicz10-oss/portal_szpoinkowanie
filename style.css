@@ -21,6 +21,13 @@ body, html {
     z-index: -999;
 }
 
+#youtube-player {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    visibility: hidden;
+}
+
 /* --- Pulpit i Siatka Ikon --- */
 .desktop {
     padding: 20px;
@@ -75,7 +82,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 8px 8px 5px 5px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    display: none; /* Domyślnie ukryte na starcie */
+    display: none;
     z-index: 500;
     flex-direction: column;
 }
@@ -101,10 +108,7 @@ body, html {
     gap: 5px;
 }
 
-.window-controls {
-    display: flex;
-    gap: 3px;
-}
+.window-controls { display: flex; gap: 3px; }
 
 .win-btn {
     background: linear-gradient(to bottom, #ffffff 0%, #e1e1e1 100%);
@@ -203,6 +207,144 @@ body, html {
     word-break: break-word;
 }
 
+/* ==================================================== */
+/* STYLIZACJA WIDGETU WMP (WINDOWS MEDIA PLAYER)       */
+/* ==================================================== */
+.wmp-widget {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    width: 280px;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 6px 6px 4px 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 600;
+    display: none; /* Domyślnie schowany, otwieramy klikając ikonę Muzyka */
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.wmp-header {
+    background: linear-gradient(to bottom, #3a3a3a 0%, #1a1a1a 100%);
+    color: #bbb;
+    font-size: 11px;
+    padding: 3px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+}
+
+.wmp-close-btn {
+    background: transparent;
+    border: none;
+    color: #bbb;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0 4px;
+}
+.wmp-close-btn:hover { color: #ff5555; }
+
+/* Czarny Ekran Odtwarzacza */
+.wmp-screen {
+    background: #000;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.wmp-track-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wmp-artist-name {
+    font-size: 12px;
+    color: #33aaff;
+}
+
+.wmp-album-name {
+    font-size: 11px;
+    color: #888888;
+    margin-bottom: 10px;
+}
+
+/* Pasek Postępu */
+.wmp-progress {
+    width: 100%;
+    height: 4px;
+    accent-color: #3388ff;
+    cursor: pointer;
+}
+
+/* Dolny Pasek Kontrolny (Szary/Niebieski w stylu zdjęć) */
+.wmp-controls {
+    background: linear-gradient(to bottom, #4a4d52 0%, #2b2d30 50%, #1c1d1f 100%);
+    border-top: 1px solid #555;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wmp-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wmp-control-btn {
+    background: linear-gradient(to bottom, #60656e 0%, #3a3d43 100%);
+    border: 1px solid #222;
+    color: #fff;
+    border-radius: 3px;
+    width: 24px;
+    height: 22px;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wmp-control-btn:hover { background: #707580; }
+
+.wmp-play-btn {
+    background: radial-gradient(circle, #2d82cf 0%, #0d4b85 100%);
+    border: 1px solid #66b5ff;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 120, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wmp-play-btn:hover { filter: brightness(1.2); }
+
+.wmp-volume-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wmp-volume {
+    width: 50px;
+    height: 3px;
+    accent-color: #3388ff;
+    cursor: pointer;
+}
+
 /* --- Pasek Zadań (Taskbar) --- */
 .taskbar {
     position: fixed;
@@ -263,13 +405,9 @@ body, html {
     text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
-.tray-icons {
-    display: flex;
-    gap: 8px;
-    font-size: 11px;
-}
+.tray-icons { display: flex; gap: 8px; font-size: 11px; }
 
-/* --- Wyskakujące Menu Start --- */
+/* --- Menu Start --- */
 .start-menu {
     position: fixed;
     bottom: 45px;
@@ -314,48 +452,11 @@ body, html {
     padding-bottom: 8px;
 }
 
-.start-app-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+.start-app-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.start-app-list li { font-size: 12px; color: #222; cursor: pointer; padding: 5px; border-radius: 4px; }
+.start-app-list li:hover { background: rgba(0, 100, 255, 0.15); color: #000; }
 
-.start-app-list li {
-    font-size: 12px;
-    color: #222;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 4px;
-}
-.start-app-list li:hover {
-    background: rgba(0, 100, 255, 0.15);
-    color: #000;
-}
-
-.start-menu-right {
-    width: 40%;
-    padding: 15px;
-    background: rgba(210, 225, 240, 0.5);
-}
-
-.start-menu-right ul {
-    list-style: none;
-    padding: 0;
-    margin: 40px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.start-menu-right li {
-    font-size: 11px;
-    color: #444;
-    cursor: pointer;
-}
-.start-menu-right li:hover {
-    color: #0055aa;
-    text-decoration: underline;
-}
+.start-menu-right { width: 40%; padding: 15px; background: rgba(210, 225, 240, 0.5); }
+.start-menu-right ul { list-style: none; padding: 0; margin: 40px 0 0 0; display: flex; flex-direction: column; gap: 10px; }
+.start-menu-right li { font-size: 11px; color: #444; cursor: pointer; }
+.start-menu-right li:hover { color: #0055aa; text-decoration: underline; }
