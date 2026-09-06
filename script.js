@@ -19,6 +19,9 @@ const addressPath = document.getElementById('addressPath');
 const backBtn = document.getElementById('backBtn');
 const musicFolderBtn = document.getElementById('musicFolderBtn');
 
+// Link do playlisty YouTube
+const playlistUrl = "https://youtube.com/playlist?list=PLA6GejD7yDqk&si=otPsOsl8nXZw2jzt";
+
 // 1. Otwieranie głównego okna
 function openPortalWindow() {
     myWindow.style.display = 'flex';
@@ -86,32 +89,40 @@ function showRootFolder() {
 
     const newMusicBtn = document.getElementById('musicFolderBtn');
     if (newMusicBtn) {
-        newMusicBtn.addEventListener('click', showMusicFolder);
+        newMusicBtn.addEventListener('click', showMusicPlayer);
     }
 }
 
-// Widok podfolderu Muzyka z listą utworów
-function showMusicFolder() {
-    windowTitle.innerHTML = "📁 Szpoinkowanie - Muzyka";
+// Widok Odtwarzacza Muzycznego z playlistą
+function showMusicPlayer() {
+    windowTitle.innerHTML = "🎵 Szpoinkowanie - Odtwarzacz Muzyczny";
     addressPath.textContent = "Mój Komputer > Szpoinkowanie > Muzyka";
     if (backBtn) {
         backBtn.style.display = "inline-block";
     }
 
     windowBody.innerHTML = `
-        <a href="https://www.youtube.com/watch?v=1IrByTEiuYk&list=RD1IrByTEiuYk&start_radio=1" target="_blank" class="folder-item">
-            <img src="muzyka.png" alt="Ripsquad - 2007" class="folder-img">
-            <span>Ripsquad - 2007</span>
-        </a>
-        <a href="https://www.youtube.com/watch?v=LMayWdD7Oac&list=RDLMayWdD7Oac&start_radio=1" target="_blank" class="folder-item">
-            <img src="muzyka.png" alt="hewra - waza" class="folder-img">
-            <span>hewra - waza</span>
-        </a>
+        <div style="width: 100%; display: flex; flex-direction: column; gap: 15px; padding: 10px;">
+            <div style="background: #e6e6e6; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <h3 style="margin: 0 0 5px 0; font-size: 14px;">🎛️ Vista Media Player (Playlista Redakcyjna)</h3>
+                <p style="margin: 0; font-size: 12px; color: #555;">Kliknij utwór, aby otworzyć playlistę:</p>
+            </div>
+
+            <a href="${playlistUrl}" target="_blank" class="folder-item" style="width: 100px;">
+                <img src="muzyka.png" alt="Ripsquad - 2007" class="folder-img">
+                <span>Ripsquad - 2007</span>
+            </a>
+
+            <a href="${playlistUrl}" target="_blank" class="folder-item" style="width: 100px;">
+                <img src="muzyka.png" alt="hewra - waza" class="folder-img">
+                <span>hewra - waza</span>
+            </a>
+        </div>
     `;
 }
 
 if (musicFolderBtn) {
-    musicFolderBtn.addEventListener('click', showMusicFolder);
+    musicFolderBtn.addEventListener('click', showMusicPlayer);
 }
 
 if (backBtn) {
