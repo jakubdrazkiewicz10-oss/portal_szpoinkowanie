@@ -8,31 +8,36 @@
 </head>
 <body>
 
-    <!-- Tapeta / Tło systemu -->
+    <!-- Tapeta -->
     <div class="wallpaper"></div>
+
+    <!-- Ukryty odtwarzacz YouTube IFrame API -->
+    <div id="youtube-player"></div>
 
     <!-- Pulpit z ikonami -->
     <div class="desktop">
-        <!-- 1. Mój Komputer -->
         <div class="desktop-icon" id="openWindowBtn">
             <img src="computer-icon.png" alt="Mój Komputer" class="desktop-img">
             <span>Mój Komputer</span>
         </div>
 
-        <!-- 2. Szpoinkowanie -->
         <div class="desktop-icon" id="openSzpoinkowanieBtn">
             <img src="szpoinkowanie-icon.png" alt="Szpoinkowanie" class="desktop-img">
             <span>Szpoinkowanie</span>
         </div>
 
-        <!-- 3. Kosz -->
+        <div class="desktop-icon" id="musicAppBtn">
+            <img src="muzyka.png" alt="Odtwarzacz Muzyki" class="desktop-img">
+            <span>Muzyka</span>
+        </div>
+
         <div class="desktop-icon" id="trashBtn">
             <img src="trash-icon.png" alt="Kosz" class="desktop-img">
             <span>Kosz</span>
         </div>
     </div>
 
-    <!-- Okno aplikacji (Eksplorator Windows Vista) -->
+    <!-- Okno Eksploratora (Folder Główny) -->
     <div class="vista-window" id="myWindow">
         <div class="window-header">
             <span class="window-title" id="windowTitle">
@@ -49,14 +54,12 @@
             <button id="backBtn" style="display:none; font-weight:bold; color:#0055aa;">← Wstecz</button>
             <button>Organizuj</button>
             <button>Udostępnij</button>
-            <button>Nagraj</button>
         </div>
         
         <div class="window-address-bar">
             <span>Adres:</span> <div class="address-path" id="addressPath">Mój Komputer > Szpoinkowanie</div>
         </div>
 
-        <!-- Wnętrze okna (sterowane dynamicznie przez JavaScript) -->
         <div class="window-body file-explorer" id="windowBody">
             <div class="folder-item" onclick="alert('Otwieranie folderu Felietony...')">
                 <img src="szpoinkowanie-icon.png" alt="Felietony" class="folder-img">
@@ -77,7 +80,43 @@
         </div>
     </div>
 
-    <!-- Wysuwane Menu Start w stylu Visty -->
+    <!-- ==================================================== -->
+    <!-- WIDGET WMP (WINDOWS MEDIA PLAYER) BAZOWANY NA ZDJĘCIU -->
+    <!-- ==================================================== -->
+    <div class="wmp-widget" id="wmpWidget">
+        <div class="wmp-header">
+            <span>Windows Media Player</span>
+            <button class="wmp-close-btn" id="closeWmpBtn">×</button>
+        </div>
+        
+        <!-- Ekran odtwarzacza -->
+        <div class="wmp-screen">
+            <div class="wmp-track-title" id="wmpTitle">Ładowanie playlisty...</div>
+            <div class="wmp-artist-name" id="wmpArtist">Szpoinkowanie Radio</div>
+            <div class="wmp-album-name" id="wmpAlbum">YouTube Playlist</div>
+            
+            <!-- Pasek postępu (Scrubber) -->
+            <input type="range" class="wmp-progress" id="wmpProgress" value="0" min="0" max="100">
+        </div>
+
+        <!-- Pasek kontrolny z przyciskami -->
+        <div class="wmp-controls">
+            <div class="wmp-btn-group">
+                <button class="wmp-control-btn" id="wmpStopBtn" title="Zatrzymaj">⏹</button>
+                <button class="wmp-control-btn" id="wmpPrevBtn" title="Poprzedni">⏮</button>
+                <button class="wmp-play-btn" id="wmpPlayBtn" title="Odtwarzaj / Pauza">⏸</button>
+                <button class="wmp-control-btn" id="wmpNextBtn" title="Następny">⏭</button>
+            </div>
+
+            <!-- Kontrola głośności -->
+            <div class="wmp-volume-box">
+                <span style="font-size: 10px; color: #fff;">🔊</span>
+                <input type="range" class="wmp-volume" id="wmpVolume" value="100" min="0" max="100" title="Głośność">
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Start -->
     <div class="start-menu" id="startMenu">
         <div class="start-menu-left">
             <div class="start-user-icon">👤</div>
@@ -98,18 +137,15 @@
         </div>
     </div>
 
-    <!-- Klasyczny Pasek Zadań na dole -->
+    <!-- Pasek Zadań -->
     <div class="taskbar">
-        <!-- Przycisk Start z Perłą Visty -->
         <button class="start-button" id="startBtn">
             <div class="vista-orb"></div>
             <span>Start</span>
         </button>
 
-        <!-- Pusty obszar środkowy paska zadań -->
         <div class="taskbar-center"></div>
 
-        <!-- Zasobnik systemowy (Tray) z działającym zegarem -->
         <div class="tray">
             <div class="tray-icons">
                 <span>📶</span>
@@ -119,7 +155,8 @@
         </div>
     </div>
 
-    <!-- Skrypt umieszczony na samym dole -->
+    <!-- Skrypt YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
 </html>
